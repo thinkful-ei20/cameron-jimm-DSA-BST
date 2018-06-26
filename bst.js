@@ -226,6 +226,13 @@ function isBST(bst){
   }
 }
 
+//if right most node has no branches, then third is the sibling, if no sibling third is grandparent
+//if right most node has a left branch but no right then third is the parent of rightmost
+
+function thirdHighest(bst){
+
+}
+
 function main(){
   let bst = new BST();
   
