@@ -119,6 +119,12 @@ class BST{
     return this.left._findMin();
   }
 
+  findMax() {
+    if (!this.right) {
+      return this;
+    }
+    return this.right.findMax();
+  }
 }
 
 
@@ -230,7 +236,20 @@ function isBST(bst){
 //if right most node has a left branch but no right then third is the parent of rightmost
 
 function thirdHighest(bst){
-
+  let rightMostNode = bst.findMax();
+  // display(bst);
+  console.log(rightMostNode.parent);
+  // If it has no branches, it's the sibling
+  // if (rightMostNode.left === null && rightMostNode.right === null) {
+  //   console.log(`sibling: ${rightMostNode.parent.left}`);
+  //   return rightMostNode.parent.left;
+  // }
+  // // if its parent has a .left (a sibling to the rightmostnode)
+  // if (rightMostNode.parent.left) {
+  //   // return the grandparent
+  //   console.log(`grandparent: ${rightMostNode.parent.parent}`);
+  //   return rightMostNode.parent.parent;
+  // }
 }
 
 function main(){
@@ -297,8 +316,8 @@ function main(){
   
   // 3)Third Largest
 
-  display(bst);
-  
+  // display(bst);
+  console.log(thirdHighest(bst));
 }
 
 main();
