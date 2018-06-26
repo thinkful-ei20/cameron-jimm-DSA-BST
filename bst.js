@@ -238,6 +238,18 @@ function main(){
   // console.log(bst);
   // display(bst);
 
+  bst.insert(3, '');
+  bst.insert(1, '');
+  bst.insert(4, '');
+  bst.insert(6, '');
+  bst.insert(9, '');
+  bst.insert(2, '');
+  bst.insert(5, '');
+  bst.insert(7, '');
+  
+  // 1) Check Height
+  // bstHeight(bst);
+
   // 2) is it BST?
   // let root = {
   //   key: 2,
@@ -276,19 +288,7 @@ function main(){
   // console.log(isBST(root));
 
   
-  bst.insert(3, '');
-  bst.insert(1, '');
-  bst.insert(4, '');
-  bst.insert(6, '');
-  bst.insert(9, '');
-  bst.insert(2, '');
-  bst.insert(5, '');
-  bst.insert(7, '');
-  
-  // 1) Check Hieght
-  // bstHeight(bst);
-
-
+  // 3)Third Largest
 
   //display(bst);
   
