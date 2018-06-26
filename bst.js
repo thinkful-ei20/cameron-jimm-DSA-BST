@@ -237,19 +237,7 @@ function isBST(bst){
 
 function thirdHighest(bst){
   let rightMostNode = bst.findMax();
-  // display(bst);
-  console.log(rightMostNode.parent);
-  // If it has no branches, it's the sibling
-  // if (rightMostNode.left === null && rightMostNode.right === null) {
-  //   console.log(`sibling: ${rightMostNode.parent.left}`);
-  //   return rightMostNode.parent.left;
-  // }
-  // // if its parent has a .left (a sibling to the rightmostnode)
-  // if (rightMostNode.parent.left) {
-  //   // return the grandparent
-  //   console.log(`grandparent: ${rightMostNode.parent.parent}`);
-  //   return rightMostNode.parent.parent;
-  // }
+  
 }
 
 function main(){
