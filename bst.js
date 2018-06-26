@@ -290,7 +290,7 @@ function main(){
   
   // 3)Third Largest
 
-  //display(bst);
+  display(bst);
   
 }
 
