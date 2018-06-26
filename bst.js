@@ -1,6 +1,6 @@
 'use strict';
 
-class BST {
+class BST{
   constructor(key=null, value=null, parent=null){
     this.key = key;
     this.value = value;
@@ -51,3 +51,60 @@ class BST {
 
 }
 
+
+const display = (rootTree) => {
+  setParentsNull(rootTree);
+  console.log(JSON.stringify(rootTree, replacer, 2));
+};
+
+const setParentsNull = (tree) =>{
+  if (!tree.left && !tree.right) {
+    tree.parent = null;
+    return;
+  } else
+  if(!tree.right){
+    tree.parent = null;
+    return setParentsNull(tree.left);
+  } else
+  if(!tree.left){
+    tree.parent = null;
+    return setParentsNull(tree.right);
+  } else {
+    tree.parent = null;
+    setParentsNull(tree.right);
+    setParentsNull(tree.left);
+  }
+};
+const replacer = (name, val) => {
+  if(val === null){
+    return undefined;
+  } else if(name === 'value'){
+    return undefined;
+  } else {
+    return val;
+  }
+};
+
+function main(){
+  let bst = new BST();
+  // bst.insert('B', '');
+  // bst.insert('A', '');
+  // bst.insert('D', '');
+  // bst.insert('C', '');
+  // bst.insert('E', '');
+  // console.log(bst);
+  // display(bst);
+
+  
+  bst.insert(3, '');
+  bst.insert(1, '');
+  bst.insert(4, '');
+  bst.insert(6, '');
+  bst.insert(9, '');
+  bst.insert(2, '');
+  bst.insert(5, '');
+  bst.insert(7, '');
+  display(bst);
+}
+
+main();

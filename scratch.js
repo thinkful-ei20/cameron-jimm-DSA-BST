@@ -69,6 +69,8 @@ const setParentsNull = (tree) =>{
 const replacer = (name, val) => {
   if(val === null){
     return undefined;
+  } if(name === 'value'){
+    return undefined;
   } else {
     return val;
   }
