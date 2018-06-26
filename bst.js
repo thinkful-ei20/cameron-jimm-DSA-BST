@@ -190,8 +190,46 @@ function bstHeight(bst) {
   }
 }
 
+function isBST(bst){
+  console.log(`key: ${bst.key}, left:${bst.left ? bst.left.key : null}, right:${bst.right? bst.right.key : null}`);
+  // Checks if current node has left and right banches
+  if(bst.right && bst.left){
+    // If both left and right branches exist check if the root of both branches are valid
+    if(bst.key >= bst.right.key || bst.key <= bst.left.key){
+      // If unvalid return false
+      return false;
+    } else {
+      // If both branches are valid check each of them recursively
+      // The && ensures that if any one down the line returns false everything is set to false
+      return (isBST(bst.right) && isBST(bst.left));
+    }
+    // Else, if only one branch exists check if the branch is valid
+  } else if(bst.right){
+    // If invalid returns false
+    if(bst.key >= bst.right.key){
+      return false;
+    }
+    // If valid check if it's branch is valid
+    else {
+      return isBST(bst.right);
+    } 
+  } else if(bst.left){
+    if(bst.key <= bst.left.key){
+      return false;
+    } else {
+      return isBST(bst.left);
+    }
+    // If no branches exist return true
+    // If all other branches are valid this gets passed all the way back up
+  } else {
+    return true;
+  }
+}
+
 function main(){
   let bst = new BST();
+  
+  // Testing display function
   // bst.insert('B', '');
   // bst.insert('A', '');
   // bst.insert('D', '');
@@ -199,6 +237,43 @@ function main(){
   // bst.insert('E', '');
   // console.log(bst);
   // display(bst);
+
+  // 2) is it BST?
+  // let root = {
+  //   key: 2,
+  //   left: null,
+  //   right: null,
+  //   parent: null,
+  // };
+  // let left1 = {
+  //   key: 1,
+  //   left: null,
+  //   right: null, 
+  //   parent: root,
+  // };
+  // let right1 = {
+  //   key: 4,
+  //   left: null,
+  //   right: null, 
+  //   parent: root,
+  // };
+  // let rightright = {
+  //   key: 5,
+  //   left: null,
+  //   right: null, 
+  //   parent: right1,
+  // };
+  // let rightleft = {
+  //   key: 3,
+  //   left: null,
+  //   right: null, 
+  //   parent: right1,
+  // };
+  // root.left = left1;
+  // root.right = right1;
+  // right1.right =rightright;
+  // right1.left = rightleft;
+  // console.log(isBST(root));
 
   
   bst.insert(3, '');
@@ -209,8 +284,14 @@ function main(){
   bst.insert(2, '');
   bst.insert(5, '');
   bst.insert(7, '');
-  // display(bst);
-  bstHeight(bst);
+  
+  // 1) Check Hieght
+  // bstHeight(bst);
+
+
+
+  //display(bst);
+  
 }
 
 main();

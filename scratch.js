@@ -1,35 +1,35 @@
 'use strict';
 
 let root = {
-  key: 'B',
+  key: '2',
   left: null,
   right: null,
   parent: null,
 };
 
 let left1 = {
-  key: 'A',
+  key: '1',
   left: null,
   right: null, 
   parent: root,
 };
 
 let right1 = {
-  key: 'D',
+  key: '4',
   left: null,
   right: null, 
   parent: root,
 };
 
 let rightright = {
-  key: 'E',
+  key: '5',
   left: null,
   right: null, 
   parent: right1,
 };
 
 let rightleft = {
-  key: 'C',
+  key: '3',
   left: null,
   right: null, 
   parent: right1,
