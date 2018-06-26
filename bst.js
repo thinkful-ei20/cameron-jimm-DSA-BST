@@ -155,6 +155,41 @@ const replacer = (name, val) => {
   }
 };
 
+// Recursively check for the min height of the left branch.
+function findMinHeight(bst) {
+  // base case: if there is no left branch, return 1
+  if (!bst.left) {
+    return 1;
+  }
+  // else return 1 + recursive call
+  return 1 + findMinHeight(bst.left);
+}
+
+// Recursively check for the max height of the right branch
+function findMaxHeight(bst) {
+  // base case: if there is no right branch, return 1
+  if (!bst.right) {
+    return 1;
+  }
+  // else return 1 + recursive call
+  return 1 + findMaxHeight(bst.right);
+}
+ 
+// Find the height(number of levels) of a BST
+function bstHeight(bst) {
+  const right = findMaxHeight(bst); // recursive search for right branch
+  const left = findMinHeight(bst);  // recursive search for left branch
+
+  // if left is greater than right
+  if (left > right) {
+    // return left's height
+    return console.log(`Left: ${left}`);
+  } else {
+    // else, return right's height
+    return console.log(`Right: ${right}`);
+  }
+}
+
 function main(){
   let bst = new BST();
   // bst.insert('B', '');
@@ -174,7 +209,8 @@ function main(){
   bst.insert(2, '');
   bst.insert(5, '');
   bst.insert(7, '');
-  display(bst);
+  // display(bst);
+  bstHeight(bst);
 }
 
 main();

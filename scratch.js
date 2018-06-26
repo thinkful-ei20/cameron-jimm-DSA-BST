@@ -1,3 +1,5 @@
+'use strict';
+
 let root = {
   key: 'B',
   left: null,
@@ -77,3 +79,32 @@ const replacer = (name, val) => {
 };
 
 display(root);
+
+// Write an algorithm to find the height of a binary search tree. What is the run time of your algorithm?
+
+function findMinHeight(bst) {
+  if (!bst.left) {
+    return 1;
+  }
+  return 1 + findMinHeight(bst.left);
+}
+
+function findMaxHeight(bst) {
+  if (!bst.right) {
+    return 1;
+  }
+  return 1 + findMaxHeight(bst.right);
+}
+ 
+function bstHeight(bst) {
+  const right = findMaxHeight(bst);
+  const left = findMinHeight(bst);
+
+  if (left > right) {
+    return console.log(`Left: ${left}`);
+  } else {
+    return console.log(`Right: ${right}`);
+  }
+}
+
+console.log(bstHeight([3, 1, 4, 6, 9, 2, 5, 7]));
