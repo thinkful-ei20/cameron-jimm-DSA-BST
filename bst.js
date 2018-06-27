@@ -236,8 +236,37 @@ function isBST(bst){
 //if right most node has a left branch but no right then third is the parent of rightmost
 
 function thirdHighest(bst){
-  let rightMostNode = bst.findMax();
-  
+  //Special case: empty tree.
+  if (bst.key === null) 
+    return null;
+  var state = {n: 3, result: null};
+  nth_largest(bst, state);
+  return state.result;
+
+
+  function nth_largest(tree, state) { 
+    //Finding the largest node means traversing the right first.
+    if (tree.right) {
+      nth_largest(tree.right, state);
+      if (state.result) return;
+    }
+    if (!--state.n) { 
+      //Found it.
+      state.result = tree.key; 
+      return;
+    }
+    if (tree.left) nth_largest(tree.left, state);
+  }
+}
+
+function isTreeBalanced (tree) {
+  if (!tree.right) {
+    return !(tree.left && (tree.left.left || tree.left.right));
+  }
+  if (!tree.left) {
+    return !(tree.right && (tree.right.left || tree.right.right));
+  }
+  return isTreeBalanced(tree.left) && isTreeBalanced(tree.right);
 }
 
 function main(){
@@ -265,47 +294,48 @@ function main(){
   // bstHeight(bst);
 
   // 2) is it BST?
-  // let root = {
-  //   key: 2,
-  //   left: null,
-  //   right: null,
-  //   parent: null,
-  // };
-  // let left1 = {
-  //   key: 1,
-  //   left: null,
-  //   right: null, 
-  //   parent: root,
-  // };
-  // let right1 = {
-  //   key: 4,
-  //   left: null,
-  //   right: null, 
-  //   parent: root,
-  // };
-  // let rightright = {
-  //   key: 5,
-  //   left: null,
-  //   right: null, 
-  //   parent: right1,
-  // };
-  // let rightleft = {
-  //   key: 3,
-  //   left: null,
-  //   right: null, 
-  //   parent: right1,
-  // };
-  // root.left = left1;
-  // root.right = right1;
-  // right1.right =rightright;
-  // right1.left = rightleft;
-  // console.log(isBST(root));
+  let root = {
+    key: 2,
+    left: null,
+    right: null,
+    parent: null,
+  };
+  let left1 = {
+    key: 1,
+    left: null,
+    right: null, 
+    parent: root,
+  };
+  let right1 = {
+    key: 4,
+    left: null,
+    right: null, 
+    parent: root,
+  };
+  let rightright = {
+    key: 5,
+    left: null,
+    right: null, 
+    parent: right1,
+  };
+  let rightleft = {
+    key: 3,
+    left: null,
+    right: null, 
+    parent: right1,
+  };
+  root.left = left1;
+  root.right = right1;
+  right1.right =rightright;
+  right1.left = rightleft;
+  console.log(isBST(root));
+  display(root);
 
   
   // 3)Third Largest
 
   // display(bst);
-  console.log(thirdHighest(bst));
+  //console.log(thirdHighest(bst));
 }
 
 main();
